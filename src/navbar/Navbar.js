@@ -1,12 +1,17 @@
 import React from "react";
+import topHeader from "../assets/Top Header.png";
+import dropdownArrow from "../assets/Dropdown arrow.png";
+import filterIcon from "../assets/Mask.png";
 import "./navbar.css";
+
 const Navbar = () => {
   return (
     <>
+      <img src={topHeader} alt="top header" />
       <div className="navbar">
         <div className="left-opt">
           <p>New Plan {">"}</p>
-          <p>{"<New Plan Name>"}</p>
+          <p className="active">{"<New Plan Name>"}</p>
         </div>
 
         <div className="right-opt">
@@ -17,7 +22,12 @@ const Navbar = () => {
       <div className="sub-nav">
         <div>
           <p>
-            Planning Group: <span>Arizona Zone Retail </span>
+            <span id="">Planning Group: </span>
+            <span>Arizona Zone Retail </span>
+            <img src={dropdownArrow} alt="down-arrow" />
+            <span id="filter-icon">
+              <img src={filterIcon} alt="filter-icon" />
+            </span>
           </p>
         </div>
       </div>

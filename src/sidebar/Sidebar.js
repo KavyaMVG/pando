@@ -1,49 +1,30 @@
 import React, { useState } from "react";
 import "./sidebar.css";
-import {
-  faClipboardList,
-  faFile,
-  faTableList,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import navMain from "../assets/Side Nav Single.png";
+import dashboardIcon from "../assets/Dashboard.png";
+import pageIcon from "../assets/Page.png";
 import MainPage from "../main/MainPage";
 
 const Sidebar = () => {
-  const [selectedIcon, setSelectedIcon] = useState(null);
-
-  const handleIconClick = (icon) => {
-    setSelectedIcon(icon);
-  };
+  const [selectedIcon, setSelectedIcon] = useState("");
 
   return (
-    <div className="side-navbar">
-      <div
-        className={`side-nav-icons ${
-          selectedIcon === "clipboard" ? "selected" : ""
-        }`}
-        onClick={() => handleIconClick("clipboard")}
-      >
-        <FontAwesomeIcon icon={faClipboardList} />
+    <div className="d-flex">
+      <div className="side-navbar">
+        <div className={`side-nav-icons`}>
+          <img src={navMain} alt="" />
+          <div className="dot bg-green"></div>
+        </div>
+        <div className={`side-nav-icons`}>
+          <img src={dashboardIcon} alt="" />
+        </div>
+        <div className={`side-nav-icons`}>
+          <img src={pageIcon} alt="" />
+          <div className="dot bg-red"></div>
+        </div>
       </div>
-      <div
-        className={`side-nav-icons ${
-          selectedIcon === "file" ? "selected" : ""
-        }`}
-        onClick={() => handleIconClick("file")}
-      >
-        <FontAwesomeIcon icon={faFile} />
-      </div>
-      <div
-        className={`side-nav-icons ${
-          selectedIcon === "table" ? "selected" : ""
-        }`}
-        onClick={() => handleIconClick("table")}
-      >
-        <FontAwesomeIcon icon={faTableList} />
-      </div>
-
-      <div className="main-content">
-        {selectedIcon === "file" && <MainPage />}
+      <div className="container bg-sheet">
+        <div className="main-content">{<MainPage />}</div>
       </div>
     </div>
   );

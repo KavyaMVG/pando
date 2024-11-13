@@ -1,0 +1,21 @@
+.bg-sheet {
+  background-color: #f3f6fc;
+}
+
+.title {
+  color: #005399;
+  letter-spacing: 0.1rem;
+  margin: 1rem 0;
+}
+
+.label {
+  margin: 0 1rem;
+  font-weight: 500;
+  font-size: small;
+  letter-spacing: normal;
+  color: black;
+}
+
+.success {
+  background-color: #bef0f4;
+}

@@ -16,3 +16,7 @@ code {
   --primary-color: #d9e6ff;
   --secondary-color: #828282;
 }
+
+.relative {
+  position: relative;
+}
