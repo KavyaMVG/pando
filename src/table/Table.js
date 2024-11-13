@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import vehicleIcon from "../assets/Vehicle Icon.png";
 import sourceDestIcon from "../assets/Source Destination.png";
 import arrowDown from "../assets/Arrow Stroke.png";
@@ -7,6 +7,7 @@ import materialIcon from "../assets/Material Icon.png";
 
 import "./table.css";
 import { data } from "../data";
+import MapModal from "../mapmodal/MapModal";
 
 const headers = [
   <input type="checkbox" />,
@@ -23,6 +24,11 @@ const headers = [
 ];
 
 function Table() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  const handleModalClose = () => setModalOpen(false);
+
   return (
     <div>
       <table>
@@ -35,14 +41,25 @@ function Table() {
         </thead>
         <tbody>
           {data.map((row, idx) => {
+            const isActive = selectedRow === idx;
             return (
-              <tr key={idx}>
+              <tr
+                key={idx}
+                onClick={() => {
+                  setSelectedRow(idx);
+                  setModalOpen(true);
+                }}
+                style={{
+                  backgroundColor: isActive ? "#E9F1F5" : "#fff",
+                  cursor: "pointer",
+                }}
+              >
                 <td>
                   <img src={vehicleIcon} alt="" />
                 </td>
-                <td>{row.serialNo}</td>
+                <td className="text-medium">{row.serialNo}</td>
                 <td>
-                  <span>{row.origin}</span> <br />
+                  <span className="text-bold">{row.origin}</span> <br />
                   <span className="sub-text">TX, {"<Pincode>"}</span>
                 </td>
                 <td className="relative w-8">
@@ -51,11 +68,12 @@ function Table() {
                   <img src={sourceDestIcon} alt="" />
                 </td>
                 <td>
-                  <span>{row.destination}</span> <br />
+                  <span className="text-bold">{row.destination}</span> <br />
                   <span className="sub-text">TX, {"<Pincode>"}</span>
                 </td>
                 <td>
-                  <span>{row.carrierType.carrier}</span> <br />
+                  <span className="text-bold">{row.carrierType.carrier}</span>{" "}
+                  <br />
                   <span className="sub-text">{row.carrierType.type}</span>
                 </td>
                 <td>
@@ -75,18 +93,20 @@ function Table() {
                 </td>
                 <td>
                   <div className="d-flex quantity">
-                    <span>{row.totalWeightQuantity.weightInLBS} lbs</span>
+                    <span className="text-medium">
+                      {row.totalWeightQuantity.weightInLBS} lbs
+                    </span>
                     <span>
                       <span className="label"> Orders </span>
                       <span>{row.totalWeightQuantity.orders} </span>
                     </span>
                   </div>
                   <div className="d-flex quantity">
-                    <span>
+                    <span className="text-small">
                       <span className="label"> Qty </span>
                       <span>{row.totalWeightQuantity.quantity} pcs</span>
                     </span>
-                    <span>2 pallets</span>
+                    <span className="text-small">2 pallets</span>
                   </div>
                 </td>
                 <td>
@@ -97,6 +117,7 @@ function Table() {
           })}
         </tbody>
       </table>
+      <MapModal modalOpen={modalOpen} onClose={handleModalClose} />
     </div>
   );
 }

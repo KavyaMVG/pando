@@ -1,0 +1,79 @@
+.map-modal {
+  width: 404px;
+  position: absolute;
+  right: 0;
+  top: 150px;
+  background-color: #fff;
+  height: calc(100vh - 250px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.map-modal.open {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.map-modal.close {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.modal-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 15px 10px 15px;
+  box-shadow: 0px 14px 28px 0px #0000000f;
+}
+
+.modal-tabs div {
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  box-shadow: 0px 2px 3px 0px #0000001a;
+}
+
+.modal-tabs div.tab-active {
+  background-color: #0076dd;
+  color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #005399;
+  padding: 12px 15px;
+}
+
+.option-one {
+  font-size: 14px;
+  font-weight: 600;
+}
+.option-two {
+  display: flex;
+  align-items: center;
+}
+.vis-btn {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: right;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: #005399;
+  margin-right: 5px;
+}
+
+.close-icon {
+  cursor: pointer;
+}
